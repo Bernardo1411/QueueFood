@@ -13,7 +13,7 @@ const SignIn = props => {
 
     return (
         <div className="container">
-            <div className="jumbotron">
+            <div className="jumbotron ">
                 <form>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
@@ -23,7 +23,7 @@ const SignIn = props => {
                         <label htmlFor="password">Password</label>
                         <input type="password" placeholder="password" id="password" className="form-control" onChange={e => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={submit}>Submit</button>
+                    <button type="submit" className="btn btn-primary float-right    " onClick={submit}>Submit</button>
                 </form>
             </div>
         </div>

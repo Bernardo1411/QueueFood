@@ -2,9 +2,9 @@ import {AuthReducer} from './AuthReducer'
 import {OrderReducer} from './OrderReducer' 
 import {combineReducers} from 'redux'
 
-const RootReducer = combineReducers({
+const rootReducer = combineReducers({
     auth: AuthReducer,
     order: OrderReducer
 })
 
-export default RootReducer
+export default rootReducer

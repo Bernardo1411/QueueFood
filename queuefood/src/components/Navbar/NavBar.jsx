@@ -1,47 +1,46 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, Button, NavDropdown, Form, FormControl } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import SignedIn from './SignedIn'
+import SignedOut from './SignedOut'
 
 export class NavBar extends Component {
     render() {
         return (
             <div>
-                <Navbar bg="secondary" variant="dark" expand="lg">
+                <Navbar bg="warning" variant="light" expand="lg">
                     <LinkContainer to='/'>
-                        <Navbar.Brand>
-                            React Bootstrap
-                    </Navbar.Brand>
+                        <Navbar.Brand>Queue</Navbar.Brand>
                     </LinkContainer>
+
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
+
                         <Nav className="mr-auto">
                             <LinkContainer to='/'>
-                                <Nav.Link>
-                                    Home
-                    </Nav.Link>
+                                <Nav.Link>Home</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to='/about'>
-                                <Nav.Link>
-                                    About
-                    </Nav.Link>
-                            </LinkContainer>
-                            <LinkContainer to='/contact'>
-                                <Nav.Link>
-                                    Contact
-                    </Nav.Link>
-                            </LinkContainer>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+
+                            <NavDropdown title="Info" id="basic-nav-dropdown">
+                                <NavDropdown.Item>
+                                    <LinkContainer to='/contact'>
+                                        <Nav.Link>Contact</Nav.Link>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
+
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+
+                                <NavDropdown.Item>
+                                    <LinkContainer to='/about'>
+                                        <Nav.Link>About</Nav.Link>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                        <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
+
+                            <SignedOut/>
+                            <SignedIn/>
+                        
                     </Navbar.Collapse>
                 </Navbar>
             </div>
