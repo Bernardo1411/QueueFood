@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
+import {connect} from 'react-redux'
 
-export class NavBar extends Component {
-    render() {
+const NavBar = props => {
+    
+    const {isAuth} = props
+    const links = isAuth?<SignedIn/>:<SignedOut/>
+
         return (
             <div>
                 <Navbar bg="warning" variant="light" expand="lg">
@@ -37,15 +41,19 @@ export class NavBar extends Component {
                                 </NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-
-                            <SignedOut/>
-                            <SignedIn/>
+                        
+                        {links}
                         
                     </Navbar.Collapse>
                 </Navbar>
             </div>
         )
+}
+
+const mapStateToProps = state =>{
+    return{
+        isAuth: state.firebase.auth.uid
     }
 }
 
-export default NavBar
+export default connect(mapStateToProps)(NavBar)

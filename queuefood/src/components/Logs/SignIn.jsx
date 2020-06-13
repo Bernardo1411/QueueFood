@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {addSignIn} from '../../Actions/AuthAction'
+import {signIn} from '../../Actions/AuthAction'
 import {connect} from 'react-redux'
 
 const SignIn = props => {
@@ -7,8 +7,7 @@ const SignIn = props => {
     const [password, setPassword] = useState({})
     const submit = (e) => {
         e.preventDefault()
-        props.addSignIn({email, password})
-        console.log(props)
+        props.signIn({email, password})
     }
 
     return (
@@ -25,6 +24,9 @@ const SignIn = props => {
                     </div>
                     <button type="submit" className="btn btn-primary float-right    " onClick={submit}>Submit</button>
                 </form>
+                <div className="d-flex justify-content-center">
+                    <p className="text-danger">{props.authFail}</p>
+                </div>
             </div>
         </div>
     )
@@ -36,7 +38,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{ 
-        addSignIn: user => dispatch(addSignIn(user))
+        signIn: user => dispatch(signIn(user))
     } 
 }
 

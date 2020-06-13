@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addSignIn } from '../../Actions/AuthAction'
+import { signUp } from '../../Actions/AuthAction'
 
 const initState = {
     firstName: '',
@@ -21,7 +21,7 @@ class SignUp extends Component {
 
     submit = e => {
         e.preventDefault()
-        this.props.addSignIn(this.state)
+        this.props.signUp(this.state)
     }
 
     render() {
@@ -48,6 +48,9 @@ class SignUp extends Component {
                             </div>
                             <button type="submit" className="btn btn-primary float-right" onClick={this.submit}>Submit</button>
                         </form>
+                        <div className="d-flex justify-content-center">
+                            <p className="text-danger">{this.props.authFail}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,13 +58,13 @@ class SignUp extends Component {
     }
 }
 
-const mapStateToProps = state =>{
+const mapStateToProps = state => {
     return state.auth
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addSignIn: newUser => dispatch(addSignIn(newUser))
+        signUp: newUser => dispatch(signUp(newUser))
     }
 }
 
