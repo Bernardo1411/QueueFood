@@ -6,6 +6,7 @@ import Contact from './components/Contact'
 import Navbar from './components/Navbar/NavBar'
 import SignIn from './components/Logs/SignIn'
 import SignUp from './components/Logs/SignUp'
+import Profile from './components/profile'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
@@ -21,6 +22,7 @@ function App(){
           <Route path='/contact' component={Contact} />
           <Route path='/signIn' component={SignIn} />
           <Route path='/signUp' component={SignUp}/>
+          <Route path='/profile/:id' component={Profile}/>
         </Switch>
       </BrowserRouter>
     </div>

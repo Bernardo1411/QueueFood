@@ -8,8 +8,8 @@ const SignIn = props => {
     const submit = (e) => {
         e.preventDefault()
         props.signIn({email, password})
+        //props.history.push('/')
     }
-
     return (
         <div className="container">
             <div className="jumbotron ">
