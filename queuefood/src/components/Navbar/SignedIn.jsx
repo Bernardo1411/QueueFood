@@ -7,7 +7,7 @@ import '../../css/SignedIn.css'
 
 const SignedIn = props => {
     const { initials } = props.userProfile
-    const { id } = props.userId
+    const { uid } = props.userId
     return (
         <div>
             <Nav>
@@ -15,10 +15,10 @@ const SignedIn = props => {
                     <LinkContainer to='/signIn'>
                         <Nav.Link onClick={props.signOut}>Sign Out</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to='/singIn'>
+                    <LinkContainer to={`/basket/${uid}`}>
                         <Nav.Link>Basket</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to={`/profile/${id}`}>
+                    <LinkContainer to={`/profile/${uid}`}>
                         <Nav.Link>
                             <div className="userLogo">
                                 <p className="d-flex font-weight-bold text-light m-auto text-uppercase">{initials}</p>

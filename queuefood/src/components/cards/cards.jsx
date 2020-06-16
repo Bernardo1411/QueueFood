@@ -1,24 +1,34 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {orderProduct} from '../../Actions/OrderAction'
 
 const Card = props => {
-    const { products } = props
+    const { product } = props
+    const order = e =>{
+        e.preventDefault()
+        props.orderProduct(product)
+    }
     return (
-        <div className="col-xs-12 col-md-6 col-lg-4 mb-3">
-            <div class="card bg-light" style={{ width: "18 rem" }}>
-                <img src="https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f000010ZDNXEA4/5c001711e4b00010cfa42363.jpg&w=710&h=462" class="card-img-top" alt="..." />
-                <div class="card-body bg-warning">
-                    <h5 class="card-title">{products.flavour}</h5>
+        <div className="col-xs-12 col-sm-6 col-lg-4 mb-3">
+            <div className="card bg-light" style={{ width: "18 rem" }}>
+                <img src="https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f000010ZDNXEA4/5c001711e4b00010cfa42363.jpg&w=710&h=462" className="card-img-top" alt="..." />
+                <div className="card-body bg-warning">
+                    <h5 className="card-title">{product.flavour}</h5>
                     <div className="container">
-                        <p class="card-text col-12">Ingredients: {products.description}</p>
-                        <p class="card-text col-12 float-right mb-2">Price: {products.price}</p>
+                        <p className="card-text col-12">Ingredients: {product.description}</p>
+                        <p className="card-text col-12 float-right mb-2">Price: {product.price}</p>
                     </div>
-                    <div class="btn btn-primary">Order</div>
+                    <div className="btn btn-primary" onClick={order}>Order</div>
                 </div>
-
-
             </div>
         </div>
     )
 }
 
-export default Card
+const mapDispatchToProps = dispatch =>{
+    return{
+        orderProduct: product =>{dispatch(orderProduct(product))}
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Card)

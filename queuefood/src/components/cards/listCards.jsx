@@ -3,9 +3,9 @@ import Card from './cards'
 
 const listCards = props => {
     const { listProducts } = props
-    const products = listProducts && listProducts.map(products => {
+    const products = listProducts && listProducts.map(product => {
         return (
-            <Card products={products} />
+            <Card product={product} key={product.id}/>
         )
     })
     return (
