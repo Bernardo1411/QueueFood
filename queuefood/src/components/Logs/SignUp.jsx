@@ -28,7 +28,7 @@ class SignUp extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="jumbotron">
+                    <div className="jumbotron mt-3">
                         <form>
                             <div className="form-group">
                                 <label htmlFor="firstName">First Name</label>
