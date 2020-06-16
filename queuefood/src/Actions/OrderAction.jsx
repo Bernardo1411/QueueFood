@@ -4,7 +4,11 @@ export const orderProduct = product =>{
         const userId = getState().firebase.auth.uid
 
         firestore.collection('basket').add({
-            ...product,
+            description: product.description,
+            flavour: product.flavour,
+            productId: product.id,
+            price: product.price,
+            productName: product.productName,
             userId
         }).then(() =>{
             dispatch({type:'ADD_PRODUCT'})
@@ -15,6 +19,7 @@ export const orderProduct = product =>{
 }
 
 export const deleteItem = itemId =>{
+    console.log(itemId)
     return (dispatch, getState, {getFirebase, getFirestore}) =>{
         const firestore = getFirestore()
         
