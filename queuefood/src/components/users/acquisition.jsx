@@ -6,6 +6,7 @@ import {withRouter} from 'react-router-dom'
 
 const Acquisition = props => {
     const { item } = props
+
     const delItem = e =>{
         e.preventDefault()
         props.deleteItem(item.id)
