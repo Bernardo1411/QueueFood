@@ -2,12 +2,10 @@ import React from 'react'
 import Acquisition from './acquisition'
 
 const ListOfAcquisitions = props => {
-    const {listItems} = props
-    const item = Array.isArray(listItems) && listItems.length !== 0 ? listItems.map(item =>{
-        return <Acquisition item={item} key={item.id} />
-    }):<div className="container d-flex justify-content-center">
-        <h5 className="font-weight-bold text-dark">No product found</h5>
-    </div>
+    const {listUsers} = props
+    const item = Array.isArray(listUsers) && listUsers.length !== 0 ? listUsers.map(user =>{
+        return <Acquisition user={user} key={user.uid} />
+    }):null
 
     return (
         <div>
