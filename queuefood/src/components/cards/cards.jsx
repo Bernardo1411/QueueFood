@@ -11,7 +11,7 @@ const Card = props => {
     return (
         <div className="col-xs-12 col-sm-6 col-lg-4 mb-3">
             <div className="card bg-light" style={{ width: "18 rem" }}>
-                <img src="https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f000010ZDNXEA4/5c001711e4b00010cfa42363.jpg&w=710&h=462" className="card-img-top" alt="..." />
+                <img src="https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f000010ZDNXEA4/5c001711e4b00010cfa42363.jpg&w=710&h=462" className="card-img-top img-fluid" alt="..." />
                 <div className="card-body bg-warning">
                     <h5 className="card-title">{product.flavour}</h5>
                     <div className="container">

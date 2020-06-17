@@ -10,7 +10,7 @@ class Main extends Component {
         return (
             <div className="main">
                 <div className="bg-dark d-flex justify-content-center">
-                    <h2 className="font-weight-bold text-light">Menu</h2>
+                    <h2 className="display-5 text-light">Menu</h2>
                 </div>
                 <ListCard listProducts={listProducts} />
             </div>

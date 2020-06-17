@@ -8,7 +8,7 @@ const ListOfAcquisitions = props => {
     }):<div className="container d-flex justify-content-center">
         <h5 className="font-weight-bold text-dark">No product found</h5>
     </div>
-    
+
     return (
         <div>
             <div className="container jumbotron mt-3">

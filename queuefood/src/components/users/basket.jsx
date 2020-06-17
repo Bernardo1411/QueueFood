@@ -9,7 +9,7 @@ const Basket = props => {
     return (
         <div>
             <div className="bg-dark d-flex justify-content-center">
-                <h2 className="font-weight-bold text-light">Basket</h2>
+                <h2 className="display-5 text-light">Basket</h2>
             </div>
             <ListOfAcquisitions listItems={listItems} />
         </div>
