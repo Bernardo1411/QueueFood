@@ -46,7 +46,7 @@ export const removeUser = userId =>{
         const firebase = getFirebase()
         const firestore = getFirestore()
 
-        firebase.auth().currentUser.delete().then(()=>{
+        firebase.auth().currentUser.delete().then(resp =>{
             return firestore.collection('users').doc(userId).delete()
         }).then(resp =>{
             dispatch({type:'REMOVE_USER'})
