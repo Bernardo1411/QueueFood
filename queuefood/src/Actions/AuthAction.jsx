@@ -40,3 +40,18 @@ export const signOut = () => {
         })
     }
 }
+
+export const removeUser = userId =>{
+    return (dispatch, getState, {getFirebase, getFirestore}) =>{
+        const firebase = getFirebase()
+        const firestore = getFirestore()
+
+        firebase.auth().currentUser.delete().then(()=>{
+            return firestore.collection('users').doc(userId).delete()
+        }).then(resp =>{
+            dispatch({type:'REMOVE_USER'})
+        }).catch(err => {
+            dispatch({type:'REMOVE_USER_FAILED', err})
+        })
+    }
+}

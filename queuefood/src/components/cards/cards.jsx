@@ -3,11 +3,13 @@ import {connect} from 'react-redux'
 import {orderProduct} from '../../Actions/OrderAction'
 
 const Card = props => {
-    const { product } = props
+    const { product, notify } = props
     const order = e =>{
         e.preventDefault()
         props.orderProduct(product)
+        notify()
     }
+
     return (
         <div className="col-xs-12 col-sm-6 col-lg-4 mb-3">
             <div className="card bg-light" style={{ width: "18 rem" }}>

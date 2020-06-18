@@ -2,10 +2,10 @@ import React from 'react'
 import Card from './cards'
 
 const listCards = props => {
-    const { listProducts } = props
+    const { listProducts, notify } = props
     const products = listProducts && listProducts.map(product => {
         return (
-            <Card product={product} key={product.id}/>
+            <Card product={product} notify={notify} key={product.id}/>
         )
     })
     return (

@@ -8,6 +8,16 @@
     height: 45px;
 }
 
+.userLogoProfile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px 100px;
+    background-color: black;
+    width: 60%;
+    height: 65%;
+}
+
 .signedIn{
     display: flex;
     flex-direction: row;
@@ -18,5 +28,15 @@
     .signedIn{
         flex-direction: column;
         align-items: baseline;
+    }
+}
+
+@media(max-width: 768px){
+    .userLogoProfile{
+        display: none;
+    }
+
+    .userLogoProfileDiv{
+        display: none;
     }
 }
