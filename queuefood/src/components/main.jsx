@@ -10,7 +10,7 @@ toast.configure()
 class Main extends Component {
 
     notify = () =>{
-        toast.success('Product Added', {position: toast.POSITION.TOP_CENTER})
+        toast.success('Product Added', {position: toast.POSITION.TOP_CENTER, autoClose: 2000,})
     }
 
     render() {
