@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { removeUser } from '../../Actions/AuthAction'
 import '../../css/SignedIn.css'
+import {withRouter} from 'react-router'
 
 const Profile = props => {
     const { firstName, lastName, initials } = props.profile
@@ -10,6 +11,7 @@ const Profile = props => {
     const remove = e => {
         e.preventDefault()
         props.removeUser(uid)
+        props.history.push('/')
     }
 
     return (
@@ -51,4 +53,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile))
