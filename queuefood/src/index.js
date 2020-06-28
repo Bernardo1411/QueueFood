@@ -17,18 +17,19 @@ const store = createStore(rootReducer,
 
 const rrfProps = {
   firebase,
-  config: { userProfile: 'users', useFirestoreForProfile: true},
+  config: { userProfile: 'users', useFirestoreForProfile: true },
   dispatch: store.dispatch,
   createFirestoreInstance
 }
 
 ReactDOM.render(
-  
-    <Provider store={store}>
+  <React.StrictMode>
+    <Provider store={store}>    
       <ReactReduxFirebaseProvider {...rrfProps}>
         <App />
       </ReactReduxFirebaseProvider>
-    </Provider>,
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 )
 
