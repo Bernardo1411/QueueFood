@@ -12,7 +12,7 @@ const Acquisition = props => {
         e.preventDefault()
         props.deleteItem(user.id, itemId)
     }
-
+    
     const goToHome = e => {
         e.preventDefault()
         props.history.push('/')

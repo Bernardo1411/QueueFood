@@ -1,6 +1,6 @@
 export const orderProduct = product => {
-    return (dispatch, getState, { getFirebase, getFirestore }) => {
-        const firestore = getFirestore()
+    return (dispatch, getState, { getFirebase}) => {
+        const firestore = getFirebase().firestore()
         const userId = getState().firebase.auth.uid
 
         firestore.collection('users').doc(userId).collection('basket').add({
@@ -19,8 +19,8 @@ export const orderProduct = product => {
 }
 
 export const deleteItem = (userId, itemId) => {
-    return (dispatch, getState, { getFirebase, getFirestore }) => {
-        const firestore = getFirestore()
+    return (dispatch, getState, { getFirebase}) => {
+        const firestore = getFirebase().firestore()
         firestore.collection('users').doc(userId).collection('basket').doc(itemId).delete()
         .then(() => {
             dispatch({ type: 'DELETE_PRODUCT' })

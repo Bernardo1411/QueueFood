@@ -10,9 +10,9 @@ export const signIn = user => {
 }
 
 export const signUp = newUser => {
-    return (dispatch, getState, { getFirebase, getFirestore }) => {
+    return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase()
-        const firestore = getFirestore()
+        const firestore = getFirebase().firestore()
 
         firebase.auth().createUserWithEmailAndPassword(
             newUser.email,
@@ -42,10 +42,9 @@ export const signOut = () => {
 }
 
 export const removeUser = userId =>{
-    return (dispatch, getState, {getFirebase, getFirestore}) =>{
+    return (dispatch, getState, {getFirebase}) =>{
         const firebase = getFirebase()
-        const firestore = getFirestore()
-
+        const firestore = getFirebase().firestore()
         firestore.collection('users').doc(firebase.auth().currentUser.uid).delete().then( resp =>{
             firebase.auth().currentUser.delete()
         }).then(resp =>{
