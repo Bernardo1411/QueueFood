@@ -41,7 +41,6 @@ const Profile = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state.firebase.auth)
     return {
         profile: state.firebase.profile,
         auth: state.firebase.auth

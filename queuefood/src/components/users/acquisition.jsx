@@ -6,11 +6,11 @@ import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 
 const Acquisition = props => {
-    const { user } = props
+    const { userId } = props
     const { listItems } = props
     const delItem = (e, itemId) => {
         e.preventDefault()
-        props.deleteItem(user.id, itemId)
+        props.deleteItem(userId, itemId)
     }
     
     const goToHome = e => {
@@ -19,8 +19,8 @@ const Acquisition = props => {
     }
 
     const addItems = Array.isArray(listItems) && listItems.length !== 0 ? listItems.map(item => {
-        return (user.id === item.userId ?
-            <div className="col-xs-12 col-sm-6 col-lg-4 mt-2">
+        return userId === item.userId ?
+            <div className="col-xs-12 col-sm-6 col-lg-4 mt-2" key={item.id}>
                 <div className="card border-warning rounded-right">
                     <div className="card-body bg-secondary border border-0 rounded-right border-dark">
                         <h5 className="card-title text-warning font-weight-bold">{item.flavour}</h5>
@@ -36,10 +36,8 @@ const Acquisition = props => {
                     </div>
                 </div>
             </div>
-            : <div className="container d-flex justify-content-center">
-                <h5 className="font-weight-bold text-dark">No product found</h5>
-            </div>
-        )
+            : null
+        
     }) : <div className="container d-flex justify-content-center">
             <h5 className="font-weight-bold text-dark">No product found</h5>
         </div>
@@ -66,7 +64,7 @@ export default withRouter(compose(connect(mapStateToProps, mapDispatchToProps),
         return [
             {
                 collection: 'users',
-                doc: props.user.id,
+                doc: props.userId,
                 subcollections: [{ collection: 'basket' }],
                 storeAs: 'myCollections'
             }
