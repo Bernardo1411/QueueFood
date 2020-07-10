@@ -22,11 +22,11 @@ export const signUp = newUser => {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0]
-            })
+            });
         }).then(() => {
-            dispatch({ type: 'SIGN_UP_SUCCESS' })
+            dispatch({ type: 'SIGN_UP_SUCCESS' });
         }).catch(err => {
-            dispatch({ type: 'SIGN_UP_FAIL', err })
+            dispatch({ type: 'SIGN_UP_FAIL', err });
         })
     }
 }
