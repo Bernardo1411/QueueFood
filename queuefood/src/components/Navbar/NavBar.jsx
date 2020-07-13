@@ -11,7 +11,7 @@ const NavBar = props => {
     const links = isAuth?<SignedIn/>:<SignedOut/>
 
         return (
-            <div>
+            <div className="sticky-top">
                 <Navbar bg="warning" variant="light" expand="lg">
                     <LinkContainer to='/'>
                         <Navbar.Brand>Queue</Navbar.Brand>

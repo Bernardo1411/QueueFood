@@ -9,7 +9,7 @@ const listCards = props => {
         )
     })
     return (
-        <div className="jumbotron">
+        <div className="jumbotron mb-0">
             <div className="container-fluid">
                 <div className="row">
                     {products}

@@ -8,6 +8,7 @@ import SignIn from './components/Logs/SignIn'
 import SignUp from './components/Logs/SignUp'
 import Profile from './components/users/profile'
 import Basket from './components/users/basket'
+import Footer from './components/footer'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
@@ -26,6 +27,7 @@ function App(){
           <Route path='/profile/:id' component={Profile}/>
           <Route path='/basket/:id' component={Basket}/>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );

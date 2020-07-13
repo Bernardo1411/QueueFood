@@ -6,8 +6,8 @@ const Card = props => {
     const { product, notify } = props
     const order = e =>{
         e.preventDefault()
-        props.orderProduct(product)
-        notify()
+        if(props.isAuth) props.orderProduct(product)
+        notify(props.isAuth)
     }
 
     return (
@@ -27,10 +27,16 @@ const Card = props => {
     )
 }
 
+const mapStateToProps = state =>{
+    return{
+        isAuth: state.firebase.auth.uid
+    }
+}
+
 const mapDispatchToProps = dispatch =>{
     return{
         orderProduct: product =>{dispatch(orderProduct(product))}
     }
 }
 
-export default connect(null, mapDispatchToProps)(Card)
+export default connect(mapStateToProps, mapDispatchToProps)(Card)
