@@ -1,5 +1,5 @@
 const initState = {
-    isOrderCompleted: null
+    isOrderCompleted: null,
 }
 
 export const OrderReducer = (state = initState, action) => {

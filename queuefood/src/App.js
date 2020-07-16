@@ -9,6 +9,7 @@ import SignUp from './components/Logs/SignUp'
 import Profile from './components/users/profile'
 import Basket from './components/users/basket'
 import Footer from './components/footer'
+import StoreAccess from './components/store/storeAccess'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
@@ -26,6 +27,7 @@ function App(){
           <Route path='/signUp' component={SignUp}/>
           <Route path='/profile/:id' component={Profile}/>
           <Route path='/basket/:id' component={Basket}/>
+          <Route path='/store' component={StoreAccess}/>
         </Switch>
         <Footer />
       </BrowserRouter>
