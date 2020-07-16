@@ -13,19 +13,20 @@ class AddNewProduct extends Component {
 
     //state = { ...this.initialState }
 
-    send = e => {
-        e.preventDefault()
-
-        this.props.toggleOption(false)
-    }
-
-    cancel = e => {
-        e.preventDefault()
-
-        this.props.toggleOption(false)
-    }
-
     render() {
+
+        const send = e => {
+            e.preventDefault()
+    
+            this.props.toggleOption(false)
+        }
+    
+        const cancel = e => {
+            e.preventDefault()
+    
+            this.props.toggleOption(false)
+        }
+
         const addForm = <div className="container w-50">
             <div className="jumbotron mt-3">
                 <form>
@@ -45,11 +46,11 @@ class AddNewProduct extends Component {
                         <label htmlFor="price">Price</label>
                         <input type="text" placeholder="$00,00" id="price" className="form-control" onChange={() => { }} />
                     </div>
-                    <button className="btn btn-primary float-right" onClick={this.send}>Add</button>
-                    <button type="submit" className="btn btn-danger float-right mr-2" onClick={this.cancel}>Cancel</button>
+                    <button className="btn btn-primary float-right" onClick={send}>Add</button>
+                    <button type="submit" className="btn btn-danger float-right mr-2" onClick={cancel}>Cancel</button>
                 </form>
                 <div className="d-flex justify-content-center">
-                    <p className="text-danger">{() => { }}</p>
+                    <p className="text-danger">{}</p>
                 </div>
             </div>
         </div>
