@@ -31,6 +31,29 @@ export const signUp = newUser => {
     }
 }
 
+export const signUpStore = newStore => {
+    return (dispatch, getState, { getFirebase }) => {
+        const firebase = getFirebase()
+        const firestore = getFirebase().firestore()
+
+        console.log(newStore)
+        firebase.auth().createUserWithEmailAndPassword(
+            newStore.email,
+            newStore.password
+        ).then(resp => {
+            return firestore.collection('store').doc(resp.user.uid).set({
+                firstName: newStore.companyName,
+                lastName: newStore.cnpj,
+                initials: newStore.companyName[0] + newStore.companyName[1]
+            });
+        }).then(() => {
+            dispatch({ type: 'SIGN_UP_SUCCESS' });
+        }).catch(err => {
+            dispatch({ type: 'SIGN_UP_FAIL', err });
+        })
+    }
+}
+
 export const signOut = () => {
     return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase()

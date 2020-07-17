@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
+import { signUpStore } from '../../../Actions/AuthAction'
 import { connect } from 'react-redux'
-import { signUp } from '../../Actions/AuthAction'
 
 const initState = {
-    firstName: '',
-    lastName: '',
+    companyName: '',
+    cnpj: '',
     email: '',
     password: ''
 }
 
-class SignUp extends Component {
-
+class SignUpStore extends Component {
     state = { ...initState }
 
     insertData = e => {
@@ -21,26 +20,27 @@ class SignUp extends Component {
 
     submit = e => {
         e.preventDefault()
-        this.props.signUp(this.state)
+        this.props.signUpStore(this.state)
     }
 
     render() {
         return (
             <div>
                 <div className="container">
-                    <div className="jumbotron mt-3">
+                    <div className="jumbotron mt-0 pt-3">
+                        <h5 className="display-5 mb-3 text-secondary d-flex justify-content-center">Store</h5>
                         <form>
                             <div className="form-group">
-                                <label htmlFor="firstName">First Name</label>
-                                <input type="text" placeholder="Name" id="firstName" className="form-control" onChange={this.insertData} />
+                                <label htmlFor="companyName">Company name</label>
+                                <input type="text" placeholder="company name" id="companyName" className="form-control" onChange={this.insertData} />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="lastName">Last Name</label>
-                                <input type="text" placeholder="Last Name" id="lastName" className="form-control" onChange={this.insertData} />
+                                <label htmlFor="cnpj">CNPJ</label>
+                                <input type="number" placeholder="CNPJ" id="cnpj" className="form-control" onChange={this.insertData} />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" placeholder="Email" id="email" className="form-control" onChange={this.insertData} />
+                                <label htmlFor="email">Company e-mail</label>
+                                <input type="email" placeholder="Company e-mail" id="email" className="form-control" onChange={this.insertData} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Password</label>
@@ -59,13 +59,15 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = state => {
-    return state.auth
+    return {
+        authFail: state.auth.authFail
+    }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        signUp: newUser => dispatch(signUp(newUser))
+        signUpStore: store => dispatch(signUpStore(store))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpStore)

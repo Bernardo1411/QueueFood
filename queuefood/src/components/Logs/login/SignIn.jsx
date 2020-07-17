@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {signIn} from '../../Actions/AuthAction'
+import {signIn} from '../../../Actions/AuthAction'
 import {connect} from 'react-redux'
 
 const SignIn = props => {
@@ -9,9 +9,11 @@ const SignIn = props => {
         e.preventDefault()
         props.signIn({email, password})
     }
+    
     return (
         <div className="container">
-            <div className="jumbotron mt-3">
+            <div className="jumbotron mt-0 pt-3">
+                <h5 className="display-5 mb-3 text-secondary d-flex justify-content-center">Client</h5>
                 <form>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
@@ -21,7 +23,7 @@ const SignIn = props => {
                         <label htmlFor="password">Password</label>
                         <input type="password" placeholder="password" id="password" className="form-control" onChange={e => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-primary float-right    " onClick={submit}>Submit</button>
+                    <button type="submit" className="btn btn-primary float-right" onClick={submit}>Submit</button>
                 </form>
                 <div className="d-flex justify-content-center">
                     <p className="text-danger">{props.authFail}</p>
