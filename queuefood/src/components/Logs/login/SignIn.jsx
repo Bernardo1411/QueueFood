@@ -12,8 +12,8 @@ const SignIn = props => {
     
     return (
         <div className="container">
-            <div className="jumbotron mt-0 pt-3">
-                <h5 className="display-5 mb-3 text-secondary d-flex justify-content-center">Client</h5>
+            <div className="jumbotron mt-5 pt-3">
+                <h5 className="display-5 mb-3 text-secondary d-flex justify-content-center">Sign-in</h5>
                 <form>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>

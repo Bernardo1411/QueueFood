@@ -36,14 +36,13 @@ export const signUpStore = newStore => {
         const firebase = getFirebase()
         const firestore = getFirebase().firestore()
 
-        console.log(newStore)
         firebase.auth().createUserWithEmailAndPassword(
             newStore.email,
             newStore.password
         ).then(resp => {
             return firestore.collection('store').doc(resp.user.uid).set({
-                firstName: newStore.companyName,
-                lastName: newStore.cnpj,
+                companyName: newStore.companyName,
+                cnpj: newStore.cnpj,
                 initials: newStore.companyName[0] + newStore.companyName[1]
             });
         }).then(() => {
