@@ -1,5 +1,6 @@
 const initState = {
-    toggleOption: false
+    toggleOption: false,
+    isError: null
 }
 
 export const ProductReducer = (state = initState, action) => {
@@ -8,6 +9,16 @@ export const ProductReducer = (state = initState, action) => {
             return{
                 ...state,
                 toggleOption: action.toggleOption 
+            }
+        case 'ADD_NEW_PRODUCT':
+            return{
+                ...state,
+                isError: null
+            }
+        case 'ADD_NEW_PRODUCT_FAILED':
+            return{
+                ...state,
+                isError: action.err
             }
         default: return state
     }

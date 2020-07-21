@@ -4,9 +4,8 @@ import Products from './product'
 import {connect} from 'react-redux'
 
 class StoreAccess extends Component {
-
     render() {
-        const toggleOption = this.props.toggleOption ? <AddNewProduct /> : <Products />
+        const toggleOption = this.props.toggleOption ? <AddNewProduct /> : (this.props.userId?<Products userId={this.props.userId}/>:null)
 
         return (
             <div className="p-4">
@@ -18,7 +17,8 @@ class StoreAccess extends Component {
 
 const mapStateToProps = state =>{
     return{
-        toggleOption: state.product.toggleOption
+        toggleOption: state.product.toggleOption,
+        userId: state.firebase.auth.uid
     }
 }
 

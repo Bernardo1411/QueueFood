@@ -14,13 +14,17 @@ class Main extends Component {
     }
 
     render() {
-        const { listProducts } = this.props
+        const { listStore } = this.props
+
         return (
             <div className="main">
                 <div className="bg-dark d-flex justify-content-center">
                     <h2 className="display-5 text-light">Menu</h2>
                 </div>
-                <ListCard listProducts={listProducts} notify={this.notify}/>
+                {Array.isArray(listStore) && listStore.length !== 0 ? listStore.map(store =>{
+                    return <ListCard store={store} notify={this.notify} key={store.id}/>
+                }):null
+            }
             </div>
         )
     }
@@ -28,9 +32,9 @@ class Main extends Component {
 
 const mapStateToProps = state => {
     return {
-        listProducts: state.firestore.ordered.products
+        listStore: state.firestore.ordered.store
     }
 }
 
 export default compose(connect(mapStateToProps),
-    firestoreConnect([{ collection: 'products' }]))(Main)
+    firestoreConnect([{ collection: 'store' }]))(Main)
