@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleOption } from '../../Actions/productAction'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+
+import { toggleOption } from '../../Actions/productAction'
 
 const Products = props => {
     const addItem = e => {

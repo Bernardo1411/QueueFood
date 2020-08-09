@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+
 import AddNewProduct from './addNewProduct'
 import Products from './product'
-import {connect} from 'react-redux'
 
 class StoreAccess extends Component {
     render() {

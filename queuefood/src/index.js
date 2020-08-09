@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from './Reducers/RootReducer'
 import thunk from 'redux-thunk'
 import { createFirestoreInstance } from 'redux-firestore'
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase'
+import { BrowserRouter } from 'react-router-dom'
+
+import * as serviceWorker from './serviceWorker';
+import rootReducer from './Reducers/RootReducer'
 import firebase from './config/firebaseConfig'
+import './index.css';
 
 const store = createStore(rootReducer,
   applyMiddleware(thunk.withExtraArgument({ getFirebase }))
@@ -23,13 +25,13 @@ const rrfProps = {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>    
+    <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ReactReduxFirebaseProvider>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 )
 

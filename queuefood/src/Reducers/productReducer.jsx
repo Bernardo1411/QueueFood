@@ -1,5 +1,6 @@
 import * as actionType from '../Actions/actionTypes'
-
+import {updatedObject} from '../shared/utility'
+ 
 const initState = {
     toggleOption: false,
     isError: null
@@ -8,20 +9,11 @@ const initState = {
 export const ProductReducer = (state = initState, action) => {
     switch (action.type) {
         case actionType.TOGGLE_OPTION:
-            return{
-                ...state,
-                toggleOption: action.toggleOption 
-            }
+            return updatedObject(state, {toggleOption: action.toggleOption})
         case actionType.ADD_NEW_PRODUCT:
-            return{
-                ...state,
-                isError: null
-            }
+            return updatedObject(state, {isError: null})
         case actionType.ADD_NEW_PRODUCT_FAILED:
-            return{
-                ...state,
-                isError: action.err
-            }
+            return updatedObject(state, {isError: action.err})
         default: return state
     }
 }

@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import './App.css';
 import Main from './components/main'
 import About from './components/About'
@@ -6,33 +9,64 @@ import Contact from './components/Contact'
 import Navbar from './components/Navbar/NavBar'
 import SignIn from './components/Logs/login/SignIn'
 import SignUp from './components/Logs/signUp/signUpToggle'
-import Profile from './components/users/profile'
-import Basket from './components/users/basket'
 import Footer from './components/footer'
-import StoreAccess from './components/store/storeAccess'
+import asyncComponent from './hoc/asyncComponent/asyncComponent'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Route, Switch } from 'react-router'
-import { BrowserRouter } from 'react-router-dom'
 
-function App(){
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Navbar />
+const asyncProfile = asyncComponent(() => {
+  return import('./components/users/profile')
+})
+
+const asyncBasket = asyncComponent(() => {
+  return import('./components/users/basket')
+})
+
+const asyncStore = asyncComponent(() => {
+  return import('./components/store/storeAccess')
+})
+
+class App extends Component {
+
+  render() {
+    let routes = (
+      <Switch>
+        <Route path='/contact' component={Contact} />
+        <Route path='/about' component={About} />
+        <Route path='/signIn' component={SignIn} />
+        <Route path='/signUp' component={SignUp} />
+        <Route exact path='/' component={Main} />
+        <Redirect to='/signIn' />
+      </Switch>
+    )
+
+    if (this.props.isAuth) {
+      routes = (
         <Switch>
-          <Route exact path='/' component={Main} />
-          <Route path='/about' component={About} />
           <Route path='/contact' component={Contact} />
-          <Route path='/signIn' component={SignIn} />
-          <Route path='/signUp' component={SignUp}/>
-          <Route path='/profile/:id' component={Profile}/>
-          <Route path='/basket/:id' component={Basket}/>
-          <Route path='/store' component={StoreAccess}/>
+          <Route path='/about' component={About} />
+          <Route path='/profile/:id' component={asyncProfile} />
+          <Route path='/basket/:id' component={asyncBasket} />
+          <Route path='/store/:id' component={asyncStore} />
+          <Route exact path='/' component={Main} />
+          <Redirect to='/' />
         </Switch>
-        <Footer />
-      </BrowserRouter>
-    </div>
-  );
+      )
+    }
+
+    return (
+      <div className="App">
+          <Navbar />
+          {routes}
+          <Footer />
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.firebase.auth.uid
+  }
+}
+
+export default connect(mapStateToProps)(App);

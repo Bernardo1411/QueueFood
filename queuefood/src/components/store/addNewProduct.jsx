@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import { toggleOption } from '../../Actions/productAction'
 import { insertProduct } from '../../Actions/productAction'
 
