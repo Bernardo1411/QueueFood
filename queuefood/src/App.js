@@ -6,12 +6,11 @@ import './App.css';
 import Main from './components/main'
 import About from './components/About'
 import Contact from './components/Contact'
-import Navbar from './components/Navbar/NavBar'
 import SignIn from './components/Logs/login/SignIn'
 import SignUp from './components/Logs/signUp/signUpToggle'
-import Footer from './components/footer'
 import asyncComponent from './hoc/asyncComponent/asyncComponent'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Layout from './hoc/layout/layout'
 
 const asyncProfile = asyncComponent(() => {
   return import('./components/users/profile')
@@ -55,9 +54,9 @@ class App extends Component {
 
     return (
       <div className="App">
-          <Navbar />
+        <Layout>
           {routes}
-          <Footer />
+        </Layout>
       </div>
     );
   }
