@@ -1,6 +1,8 @@
+import * as actionType from './actionTypes'
+
 export const toggleOption = option =>{
     return {
-        type: "TOGGLE_OPTION",
+        type: actionType.TOGGLE_OPTION,
         toggleOption: option
     }
 }
@@ -18,9 +20,9 @@ export const insertProduct = product =>{
             productName: product.productName,
             userId
         }).then(() => {
-            dispatch({ type: 'ADD_NEW_PRODUCT' })
+            dispatch({ type: actionType.ADD_NEW_PRODUCT })
         }).catch(err => {
-            dispatch({ type: 'ADD_NEW_PRODUCT_FAILED', err })
+            dispatch({ type: actionType.ADD_NEW_PRODUCT_FAILED, err })
         })
     }
 }

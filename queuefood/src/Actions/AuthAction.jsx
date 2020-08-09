@@ -1,11 +1,13 @@
+import * as actionType from './actionTypes'
+
 export const signIn = user => {
     return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase()
 
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then(() => {
-                dispatch({ type: 'SIGN_IN_SUCCESS' })
-            }).catch(() => dispatch({ type: 'SIGN_IN_FAIL' }))
+                dispatch({ type: actionType.SIGN_IN_SUCCESS })
+            }).catch(() => dispatch({ type: actionType.SIGN_IN_FAIL }))
     }
 }
 
@@ -24,9 +26,9 @@ export const signUp = newUser => {
                 initials: newUser.firstName[0] + newUser.lastName[0]
             });
         }).then(() => {
-            dispatch({ type: 'SIGN_UP_SUCCESS' });
+            dispatch({ type: actionType.SIGN_UP_SUCCESS });
         }).catch(err => {
-            dispatch({ type: 'SIGN_UP_FAIL', err });
+            dispatch({ type: actionType.SIGN_UP_FAIL, err });
         })
     }
 }
@@ -46,9 +48,9 @@ export const signUpStore = newStore => {
                 initials: newStore.companyName[0] + newStore.companyName[1]
             });
         }).then(() => {
-            dispatch({ type: 'SIGN_UP_SUCCESS' });
+            dispatch({ type: actionType.SIGN_UP_SUCCESS });
         }).catch(err => {
-            dispatch({ type: 'SIGN_UP_FAIL', err });
+            dispatch({ type: actionType.SIGN_UP_FAIL, err });
         })
     }
 }
@@ -58,7 +60,7 @@ export const signOut = () => {
         const firebase = getFirebase()
 
         firebase.auth().signOut().then(() => {
-            dispatch({ type: 'SIGN_OUT_SUCCESS' })
+            dispatch({ type: actionType.SIGN_OUT_SUCCESS })
         })
     }
 }
@@ -70,9 +72,9 @@ export const removeUser = userId =>{
         firestore.collection('users').doc(userId).delete().then( resp =>{
             firebase.auth().currentUser.delete()
         }).then(resp =>{
-            dispatch({type:'REMOVE_USER'})
+            dispatch({type: actionType.REMOVE_USER})
         }).catch(err => {
-            dispatch({type:'REMOVE_USER_FAILED', err})
+            dispatch({type: actionType.REMOVE_USER_FAILED, err})
         })
     }
 }

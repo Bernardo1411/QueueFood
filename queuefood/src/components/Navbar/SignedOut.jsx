@@ -2,9 +2,11 @@ import React from 'react'
 import { Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
+import Aux from '../../hoc/Aux/Aux'
+
 const SignedOut = () => {
     return (
-        <div>
+        <Aux>
             <Nav>
                 <LinkContainer to='/signIn'>
                     <Nav.Link>Sign in</Nav.Link>
@@ -13,7 +15,7 @@ const SignedOut = () => {
                     <Nav.Link>Sign up</Nav.Link>
                 </LinkContainer>
             </Nav>
-        </div>
+        </Aux>
     )
 }
 

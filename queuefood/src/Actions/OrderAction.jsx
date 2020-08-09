@@ -1,3 +1,5 @@
+import * as actionType from './actionTypes'
+
 export const orderProduct = product => {
     return (dispatch, getState, { getFirebase}) => {
         const firestore = getFirebase().firestore()
@@ -11,9 +13,9 @@ export const orderProduct = product => {
             productName: product.productName,
             userId
         }).then(() => {
-            dispatch({ type: 'ADD_PRODUCT' })
+            dispatch({ type: actionType.ADD_PRODUCT })
         }).catch(err => {
-            dispatch({ type: 'ADD_PRODUCT_FAILED', err })
+            dispatch({ type: actionType.ADD_PRODUCT_FAILED, err })
         })
     }
 }
@@ -23,10 +25,10 @@ export const deleteItem = (userId, itemId) => {
         const firestore = getFirebase().firestore()
         firestore.collection('users').doc(userId).collection('basket').doc(itemId).delete()
         .then(() => {
-            dispatch({ type: 'DELETE_PRODUCT' })
+            dispatch({ type: actionType.DELETE_PRODUCT })
         })
         .catch(() => {
-            dispatch({ type: 'DELETE_PRODUCT_FAILED' })
+            dispatch({ type: actionType.DELETE_PRODUCT_FAILED })
         })
     }
 }

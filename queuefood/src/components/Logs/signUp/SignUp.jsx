@@ -26,7 +26,6 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
                 <div className="container">
                     <div className="jumbotron mt-0 pt-3">
                         <h5 className="display-5 mb-3 text-secondary d-flex justify-content-center">Client</h5>
@@ -54,7 +53,6 @@ class SignUp extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
         )
     }
 }

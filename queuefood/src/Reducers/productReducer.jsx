@@ -1,3 +1,5 @@
+import * as actionType from '../Actions/actionTypes'
+
 const initState = {
     toggleOption: false,
     isError: null
@@ -5,17 +7,17 @@ const initState = {
 
 export const ProductReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'TOGGLE_OPTION':
+        case actionType.TOGGLE_OPTION:
             return{
                 ...state,
                 toggleOption: action.toggleOption 
             }
-        case 'ADD_NEW_PRODUCT':
+        case actionType.ADD_NEW_PRODUCT:
             return{
                 ...state,
                 isError: null
             }
-        case 'ADD_NEW_PRODUCT_FAILED':
+        case actionType.ADD_NEW_PRODUCT_FAILED:
             return{
                 ...state,
                 isError: action.err

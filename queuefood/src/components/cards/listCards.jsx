@@ -1,8 +1,9 @@
 import React from 'react'
-import Card from './cards'
 import { firestoreConnect } from "react-redux-firebase";
 import {connect} from 'react-redux'
 import { compose } from 'redux';
+
+import Card from './cards'
 
 const listCards = props => {
     const { notify, listOfProducts } = props

@@ -2,7 +2,9 @@ import React from 'react'
 import { Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { connect } from 'react-redux'
+
 import { signOut } from '../../Actions/AuthAction'
+import Aux from '../../hoc/Aux/Aux'
 import '../../css/SignedIn.css'
 
 const SignedIn = props => {
@@ -10,8 +12,8 @@ const SignedIn = props => {
     const { uid } = props.userId
     const { firstName } = props.userProfile
     return (
-        <div>
-            {firstName?<Nav>
+        <Aux>
+            {firstName ? <Nav>
                 <div className="signedIn">
                     <LinkContainer to='/signIn'>
                         <Nav.Link onClick={props.signOut}>Sign Out</Nav.Link>
@@ -27,24 +29,24 @@ const SignedIn = props => {
                         </Nav.Link>
                     </LinkContainer>
                 </div>
-            </Nav>:<Nav>
-                <div className="signedIn">
-                    <LinkContainer to='/signIn'>
-                        <Nav.Link onClick={props.signOut}>Sign Out</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to={`/store/${uid}`}>
-                        <Nav.Link>Store</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to={`/profile/${uid}`}>
-                        <Nav.Link>
-                            <div className="userLogo">
-                                <p className="d-flex font-weight-bold text-light m-auto text-uppercase">{initials}</p>
-                            </div>
-                        </Nav.Link>
-                    </LinkContainer>
-                </div>
-            </Nav>}
-        </div>
+            </Nav> : <Nav>
+                    <div className="signedIn">
+                        <LinkContainer to='/signIn'>
+                            <Nav.Link onClick={props.signOut}>Sign Out</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to={`/store/${uid}`}>
+                            <Nav.Link>Store</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to={`/profile/${uid}`}>
+                            <Nav.Link>
+                                <div className="userLogo">
+                                    <p className="d-flex font-weight-bold text-light m-auto text-uppercase">{initials}</p>
+                                </div>
+                            </Nav.Link>
+                        </LinkContainer>
+                    </div>
+                </Nav>}
+        </Aux>
     )
 }
 
